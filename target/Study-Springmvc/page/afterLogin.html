@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<div align="top">
+    <ul class="layui-nav layui-bg-green">
+        <li class="layui-nav-item"><a href="/success/showMyMessages" th:text="${username}"></a></li>
+        <li>   </li>
+    </ul>
+
+</div>
+<div align="center">
+    <form action="/success/findMessage" >
+        <input type="text" name="content" placeholder="输入要查找的帖子" class="layui-input">
+        <button type="submit" class="layui-btn layui-btn-normal">搜索</button>
+    </form>
+</div>
+<div align="center">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <th>作者id</th>
+        <th>内容</th>
+        <th>操作</th>
+        </thead>
+        <tbody th:each="message : ${list}">
+        <tr>
+            <td th:text="${message.msgid}"></td>
+            <td th:text="${message.getPartContent()}"></td>
+            <td><a th:href="@{/success/showmsg(msgid=${message.msgid})}" th:text="浏览"></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

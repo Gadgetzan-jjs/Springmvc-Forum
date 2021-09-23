@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看我的发布</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<div align="top">
+    <ul class="layui-nav layui-bg-green">
+        <li class="layui-nav-item"><a href="/success/insert">发布</a></li>
+        <li class="layui-nav-item"><a href="/success/showMyComment">我的评论</a></li>
+</ul>
+</div>
+
+<div align="center">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+        <th>内容</th>
+        <th>操作</th>
+        </tr>
+        </thead>
+        <tbody th:each="message : ${list}">
+        <tr>
+            <td th:text="${message.getPartContent()}"></td>
+            <td><a th:href="@{/success/showmsg(msgid=${message.msgid})}" th:text="浏览"></a></td>
+            <td><a th:href="@{/success/deletemsg(msgid=${message.msgid})}" th:text="删除"></a></td>
+            <td><a th:href="@{/success/updatemsg(msgid=${message.msgid})}" th:text="修改"></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <meta charset="UTF-8">-->
+    <title>查询结果</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<div align="center">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <th>作者id</th>
+        <th>内容</th>
+        <th>操作</th>
+        </thead>
+        <tbody th:each="message : ${messages}">
+        <tr>
+            <td th:text="${message.msgid}"></td>
+            <td th:text="${message.getPartContent()}"></td>
+            <td><a th:href="@{/success/showmsg(msgid=${message.msgid})}" th:text="查看"></a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改文本</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+    <div align="center">
+        <form action="/success/afterupdate" >
+            <br>
+        <textarea th:text="${content}" name="upcontent"></textarea>
+            <br>
+            <button type="submit" class="layui-btn layui-btn-normal">提交</button>
+        </form>
+    </div>
+</body>
+</html>

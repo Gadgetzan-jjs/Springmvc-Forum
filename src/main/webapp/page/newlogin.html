@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script>
+        document.documentElement.style.overflow="hidden";
+        function check(){
+            var name = document.getElementById("name").value;
+            var password = document.getElementById("password").value;
+            if(name == ""){
+                alert("账号不能为空");
+                return false;
+            }
+            if(password == ""){
+                alert("密码不能为空");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+<div align="center">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<form action="/log" method="post" onsubmit="check()" class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+           <input type="text" name="username" id="name"  autocomplete="off" required  lay-verify="required" placeholder="请输入用户名" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+            <input type="password" name="password" id="password" required  lay-verify="required" placeholder="请输入密码" class="layui-input">
+            </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+    <input type="submit" name="login" value="登录" 	class="layui-btn layui-btn-normal">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <td th:text="${msg}"></td>
+            <a href="/page/register.html" 	class="layui-btn layui-btn-normal">注册</a>
+        </div>
+    </div>
+</form>
+</div>
+</body>
+</html>
